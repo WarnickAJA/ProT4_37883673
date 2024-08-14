@@ -7,7 +7,8 @@ app.set('port',3000);
 
 app.use(morgan('dev'));
 app.use(express.json());
-app.use('/Libros', LibroRoutes);
+//app.use('/Libros', LibroRoutes);
+app.use('/libros', LibroRoutes);
 
 app.listen(app.get('port'), () => {
     console.log(`Server is running on port ${app.get('port')}`);
