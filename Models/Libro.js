@@ -32,10 +32,13 @@ class Libro {
       throw new Error("El ISBN proporcionado ya existe.");
     }
 
+    // Convertir el año a una fecha (primer día del año)
+    const fechaPublicacion = new Date(`${año_publicacion}-01-02`);
+
     // Si el ISBN es único, procedemos a insertar el nuevo libro
     const [result] = await db.query(
       "INSERT INTO libros (nombre, autor, categoria, año_publicacion, ISBN) VALUES (?, ?, ?, ?, ?)",
-      [nombre, autor, categoria, año_publicacion, ISBN]
+      [nombre, autor, categoria, fechaPublicacion, ISBN]
     );
 
     return { id: result.insertId, ...data };
@@ -72,8 +75,10 @@ class Libro {
       values.push(categoria);
     }
     if (año_publicacion !== undefined) {
+      //modificacion para pasar año a tipo date
+      const fechaPublicacion = new Date(`${año_publicacion}-01-02`);
       setClauses.push(`año_publicacion = ?`);
-      values.push(año_publicacion);
+      values.push(fechaPublicacion);
     }
     if (ISBN !== undefined) {
       setClauses.push(`ISBN = ?`);

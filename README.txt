@@ -1,7 +1,7 @@
 API REST básica de CRUD con libros.
 
 Detalles a tener en cuenta:
-- La propiedad año_publicacion es de tipo DATE, formato año, mes, dia -> XXXX-XX-XX
+- La propiedad año_publicacion es de tipo DATE, PERO, para simplificar, solo debe ingresar el año.
 - La propiedad ISBN es varchar y tiene un máximo de 13 caracteres.
 - Las consultas están pensadas para realizarse mediante Postman.
 - Para que el servidor funcione, aparte de iniciar XAMPP, 
